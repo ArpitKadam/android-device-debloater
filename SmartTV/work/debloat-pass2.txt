@@ -1,0 +1,8 @@
+# Second pass for the TCL UnionTV, applied only AFTER the launcher is installed, confirmed as Home (T6) and
+# the clock screensaver is set, so the TV never has a screensaver component that points at a disabled package:
+#   tools/tv.py 'settings put secure screensaver_components com.gathin.tvhome/.ClockDream'
+# (same pass the repo's UnionTV example applied the same day). Undo: .\restore-tv.ps1 -List work\debloat-pass2.txt
+# Written in T4 (2026-10-28); NOT YET APPLIED.
+
+com.google.android.backdrop             # Ambient Mode screensaver (Google content); replaced by the launcher's Clock screensaver
+com.android.dreams.basic

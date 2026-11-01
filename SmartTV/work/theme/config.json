@@ -1,0 +1,36 @@
+{
+  "dock_apps": [
+    "com.netflix.ninja",
+    "com.google.android.youtube.tv",
+    "com.amazon.amazonvideo.livingroom",
+    "in.startv.hotstar",
+    "com.spotify.tv.android",
+    "com.crunchyroll.crunchyroid"
+  ],
+  "hidden_apps": [
+    "com.tcl.tv",
+    "com.mediatek.wwtv.tvcenter",
+    "com.mitv.gallery"
+  ],
+  "live_tv_package": "com.tcl.tv",
+  "key_filter": false,
+  "power_on_home": true,
+  "home_idle_clock_minutes": 2,
+  "power_on_home_always": true,
+  "columns": 6,
+  "background_color": "#090C14",
+  "wallpaper": true,
+  "wallpaper_rotation_minutes": 1440,
+  "wallpaper_order": "shuffle",
+  "cinematic_home": true,
+  "dock_glass": true,
+  "icon_only_buttons": true,
+  "wifi_label_width": 200,
+  "app_glow": true,
+  "glow_style": "horizon",
+  "cinematic_art": 0,
+  "ambient_glow": false,
+  "focus_overshoot": false,
+  "advanced_effects": false,
+  "clock_wallpaper": true
+}

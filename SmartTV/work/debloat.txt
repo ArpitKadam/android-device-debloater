@@ -1,0 +1,68 @@
+
+# TCL UnionTV (ro.product.model UnionTV, TCL; persist.tcl.client_type TCL-AP-RT41DT-S1, Asia-Pacific build),
+# Realtek rtd284x, Android 9 (API 28), 1.4 GB RAM (low_ram), 1280x720 panel, armeabi-v7a only.
+# Built from cleanyourtv/examples/tcl-uniontv-latin-america/debloat.txt (same platform; that list was
+# applied on three LA units) plus extras that other tested repo lists disable (counts in the comments).
+# NOT YET APPLIED. Written in T4 (2026-10-28); applied in T5.
+#
+# Apply:  TV_HOST=<tv ip> tools/disable.ps1 work/debloat.txt        (one sitting, one network: the undo record is per IP)
+# Undo:   .\restore-tv.ps1                                           (project root)
+# Everything here is DISABLED, not uninstalled. MX Player, Voot and Discovery+ are uninstalled by hand in T5
+# (user's call, APKs in backup/apks/); they are not in this file on purpose.
+#
+# Kept on purpose (owner's choices): Netflix, Prime Video, Hotstar, Zee5, VLC, Play Store, the Assistant
+# (katniss, speech.pumpkin, tv.remote.service), the Chromecast receiver (mediashell), the TCL firmware
+# updater is cut but com.tcl.rc.ota (remote OTA) stays, stock YouTube stays until SmartTube is installed
+# (T10), stock launcher stays until ours is confirmed as Home (T6; also needed by the remote's App-grid key).
+# System-relevant, left alone: com.tcl.keycustomfunctionservice (ALL the remote's TCL keys), com.tcl.tv,
+# tvinput, tvpassthrough, sourcemananger (HDMI/AV/Live TV), tcl_bt_rcu_service, autopair, keyhelp, settings,
+# initsetup, framework.custom, appstatecontroller, xian.StartandroidService, systemuioverlay (probably the
+# gear button's settings overlay), factory.view (never opened: factory package), setupwraith, leanbacklauncher
+# (fallback), inputmethod.* (both keyboards), com.android.* / com.google.android.gms / ext services.
+# Remote check after every batch: press the gear (settings overlay) and Input.
+#
+# T button: com.tcl.partnercustomizer is disabled below, so the T key does nothing until it is remapped
+# (its activity answers action com.tcl.partnercustomizer.tkey; an app of ours can declare that action).
+
+# Telemetry, feedback and boot ads
+com.tcl.bi                              # TCL analytics / telemetry service
+com.google.android.feedback
+com.google.android.tv.bugreportsender
+com.tcl.bootadservice                   # boot-time ads; disabled in 6 repo lists (4 TCL)
+
+# Content rows, promos and auto-installs
+com.google.android.tvrecommendations
+com.google.android.leanbacklauncher.recommendations   # TVINPUT_ALLOW=1 may be needed (dumpsys gave no permission block)
+com.tcl.partnercustomizer               # TCL promo rows and the T key's TKeyActivity; 10 of the 12 TCL lists that mention it disable it
+android.autoinstalls.config.tcl.device  # Play auto-installs of partner apps; TVINPUT_ALLOW=1 may be needed
+com.tcl.esticker                        # retail demo stickers
+com.tcl.appmarket2                      # TCL app store (Google Play stays)
+com.tcl.tvweishi                        # "cleaner" widget service
+com.tcl.usercenter                      # TCL account nags; the system may re-enable it at boot, it stays idle
+com.tcl.copydatatotv                    # phone-to-TV copy helper, starts at boot
+com.tcl.common.terminalmanagerplus      # TCL device-management service, watches package installs
+com.tcl.versionUpdateApp                # firmware updater: a surprise OTA could undo this setup; patch level is 2020-03; 9 repo lists disable it
+
+# Preloaded apps (JioCinema, Zee5, MX Player, Voot, Discovery+ were uninstalled by hand in T5)
+com.google.android.videos               # Play Movies & TV
+com.google.android.play.games
+com.google.android.music
+com.android.printspooler
+com.creative.fastscreen.tv              # third-party screen-mirroring app, not on the keep list
+
+# TCL media center and players: VLC replaces them (33 of 76 TCL lists disable ui_mediaCenter)
+com.tcl.ui_mediaCenter
+com.tcl.audioplayer
+com.tcl.imageplayer
+com.tcl.videoplayer
+com.android.gallery3d                   # old AOSP gallery
+
+# Google background extras (each disabled in dozens of repo lists, 28+ TCL)
+com.google.android.partnersetup
+com.google.android.onetimeinitializer
+com.google.android.syncadapters.calendar
+
+# Voice output and accessibility add-ons (the Assistant stays; it does not need these)
+com.google.android.tts                  # ~18 MB resident; only accessibility uses it
+com.google.android.marvin.talkback      # screen reader; re-enable if someone needs it
+com.android.wallpaper.livepicker

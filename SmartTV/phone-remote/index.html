@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta name="theme-color" content="#0b0f14">
+<title>TV Remote</title>
+<style>
+  :root { --bg:#0b0f14; --panel:#141b24; --edge:#243040; --text:#e8eef6; --dim:#8a99ab; --accent:#4da3ff; --hot:#ff5d73; }
+  * { box-sizing:border-box; -webkit-tap-highlight-color:transparent; touch-action:manipulation; user-select:none; }
+  body { margin:0; background:var(--bg); color:var(--text); font:16px system-ui, sans-serif; padding:16px; max-width:480px; margin-inline:auto; }
+  #status { min-height:2.6em; color:var(--dim); font-size:14px; margin-bottom:10px; }
+  #status b { color:var(--text); font-weight:600; }
+  button { background:var(--panel); color:var(--text); border:1px solid var(--edge); border-radius:14px; font:inherit; padding:14px 6px; }
+  button:active { background:var(--edge); }
+  #talk { width:100%; padding:30px 10px; font-size:19px; border-radius:22px; background:linear-gradient(160deg,#1c2a3d,#142033); }
+  #talk.live { background:var(--hot); border-color:var(--hot); }
+  .grid { display:grid; gap:10px; margin-top:14px; }
+  .pad { grid-template-columns:repeat(3,1fr); }
+  .row { grid-template-columns:repeat(4,1fr); }
+  .apps { grid-template-columns:repeat(2,1fr); }
+  form { display:flex; gap:8px; margin-top:14px; }
+  input { flex:1; background:var(--panel); color:var(--text); border:1px solid var(--edge); border-radius:12px; padding:12px; font:inherit; }
+  h2 { font-size:13px; letter-spacing:.08em; color:var(--dim); margin:22px 0 0; text-transform:uppercase; }
+</style>
+</head>
+<body>
+<div id="status">Hold the button and speak.</div>
+<button id="talk">Hold to talk</button>
+<form id="typed"><input id="line" list="cmds" placeholder="or type: open netflix" autocomplete="off" autocapitalize="none"><datalist id="cmds"></datalist><button>Go</button></form>
+
+<div class="grid pad">
+  <span></span><button data-k="19">&#9650;</button><span></span>
+  <button data-k="21">&#9664;</button><button data-k="23">OK</button><button data-k="22">&#9654;</button>
+  <button data-k="4">Back</button><button data-k="20">&#9660;</button><button data-k="3">Home</button>
+</div>
+<div class="grid row">
+  <button data-k="25">Vol &minus;</button><button data-k="164">Mute</button><button data-k="24">Vol +</button><button data-k="126">Play</button>
+  <button data-k="88">&#9198;</button><button data-k="127">Pause</button><button data-k="87">&#9197;</button><button data-k="82">Menu</button>
+</div>
+<div class="grid"><button data-say="close app">Close the app on screen</button></div>
+<h2>Apps</h2>
+<div class="grid apps">
+  <button data-a="com.netflix.ninja">Netflix</button><button data-a="com.amazon.amazonvideo.livingroom">Prime Video</button>
+  <button data-a="in.startv.hotstar">Hotstar</button><button data-a="com.google.android.youtube.tv">YouTube</button>
+  <button data-a="org.smarttube.stable">SmartTube</button><button data-a="com.spotify.tv.android">Spotify</button>
+  <button data-a="com.crunchyroll.crunchyroid">Crunchyroll</button><button data-a="org.videolan.vlc">VLC</button>
+</div>
+
+<script>
+const $ = s => document.querySelector(s);
+const say = (html) => $('#status').innerHTML = html;
+const esc = s => s.replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+
+async function post(path, body) {
+  try {
+    const r = await fetch(path, { method:'POST', headers:{ 'X-Remote':'1', 'Content-Type':'application/json' }, body:JSON.stringify(body) });
+    const j = await r.json();
+    return j.msg ? j : { ok:false, msg:j.error || 'error' };
+  } catch (e) { return { ok:false, msg:'server not reachable' }; }
+}
+async function send(path, body, heard) {
+  say((heard ? 'Heard <b>' + esc(heard) + '</b> &middot; ' : '') + '...');
+  const j = await post(path, body);
+  say((heard ? 'Heard <b>' + esc(heard) + '</b><br>' : '') + (j.ok ? 'Done: ' : '') + esc(j.msg));
+}
+
+document.querySelectorAll('[data-k]').forEach(b => b.onclick = () => send('/key', { code:+b.dataset.k }));
+document.querySelectorAll('[data-say]').forEach(b => b.onclick = () => send('/say', { text:b.dataset.say }, b.dataset.say));
+document.querySelectorAll('[data-a]').forEach(b => b.onclick = () => send('/app', { pkg:b.dataset.a }));
+// The drop-down under the typed box: every stored command, from the server's tables.
+fetch('/commands', { headers:{ 'X-Remote':'1' } }).then(r => r.json()).then(j => {
+  $('#cmds').innerHTML = j.suggestions.map(c => '<option value="' + esc(c) + '">').join('');
+}).catch(() => {});
+$('#typed').onsubmit = e => { e.preventDefault(); const t = $('#line').value.trim(); if (t) send('/say', { text:t }, t); $('#line').value = ''; };
+
+// Hold to talk: Chrome's own recogniser (needs the phone's internet); the text is sent when the button is released.
+const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+const talk = $('#talk');
+if (!SR) {
+  talk.disabled = true;
+  say('This browser has no speech recognition: use Chrome, or type below.');
+} else {
+  const rec = new SR();
+  rec.lang = 'en-IN';
+  rec.interimResults = true;
+  let heard = '', holding = false;
+  rec.onresult = e => { heard = [...e.results].map(r => r[0].transcript).join(' ').trim(); say('Listening: <b>' + esc(heard) + '</b>'); };
+  rec.onerror = e => { holding = false; talk.classList.remove('live'); say('Mic: ' + esc(e.error) + (e.error === 'not-allowed' ? ' (allow the microphone for this page)' : '')); };
+  rec.onend = () => { holding = false; talk.classList.remove('live'); if (heard) send('/say', { text:heard }, heard); else say('Heard nothing, hold and speak.'); };
+  const start = e => { e.preventDefault(); if (holding) return; holding = true; heard = ''; talk.classList.add('live'); talk.textContent = 'Listening...'; try { rec.start(); } catch (_) {} };
+  const stop = () => { talk.textContent = 'Hold to talk'; if (holding) try { rec.stop(); } catch (_) {} };
+  talk.addEventListener('pointerdown', start);
+  ['pointerup', 'pointercancel', 'pointerleave'].forEach(n => talk.addEventListener(n, stop));
+  talk.addEventListener('contextmenu', e => e.preventDefault());
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+# b2-apps-media of work/debloat.txt (applied in T5, one batch at a time, remote check after each)
+com.google.android.videos               # Play Movies & TV
+com.google.android.play.games
+com.google.android.music
+com.android.printspooler
+com.creative.fastscreen.tv              # third-party screen-mirroring app, not on the keep list
+com.tcl.ui_mediaCenter
+com.tcl.audioplayer
+com.tcl.imageplayer
+com.tcl.videoplayer
+com.android.gallery3d                   # old AOSP gallery
+com.google.android.tts                  # ~18 MB resident; only accessibility uses it
+com.google.android.marvin.talkback      # screen reader; re-enable if someone needs it
+com.android.wallpaper.livepicker

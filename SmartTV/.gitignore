@@ -1,0 +1,26 @@
+# Build output and local config
+build/
+.gradle/
+local.properties
+*.apk
+*.iml
+.idea/
+tools/venv/
+
+# Device-identifying dumps (serials, IDs, Wi-Fi names) and the APKs of removed apps.
+# restore-tv.ps1 needs backup/ on the machine that did the debloat; keep your own copy off-repo.
+backup/
+
+# Sideloaded third-party APKs. Re-download and verify against the SHA-256 in CLAUDE.md.
+work/downloads/
+
+# Wallpapers: images you may not have the rights to share. Add your own under the same names.
+TV-Wallpapers/
+work/theme/wallpapers/
+reference/theme-glass/wallpaper.jpg
+
+# adb keys and recovery records: never commit
+adbkey
+adbkey.pub
+tools/adbkey/
+.cleanyourtv/

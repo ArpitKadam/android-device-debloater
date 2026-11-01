@@ -1,0 +1,14 @@
+# b1-telemetry-promos of work/debloat.txt (applied in T5, one batch at a time, remote check after each)
+com.tcl.bi                              # TCL analytics / telemetry service
+com.google.android.feedback
+com.google.android.tv.bugreportsender
+com.tcl.bootadservice                   # boot-time ads; disabled in 6 repo lists (4 TCL)
+com.google.android.tvrecommendations
+com.google.android.leanbacklauncher.recommendations   # TVINPUT_ALLOW=1 may be needed (dumpsys gave no permission block)
+android.autoinstalls.config.tcl.device  # Play auto-installs of partner apps; TVINPUT_ALLOW=1 may be needed
+com.tcl.esticker                        # retail demo stickers
+com.tcl.appmarket2                      # TCL app store (Google Play stays)
+com.tcl.tvweishi                        # "cleaner" widget service
+com.tcl.usercenter                      # TCL account nags; the system may re-enable it at boot, it stays idle
+com.tcl.copydatatotv                    # phone-to-TV copy helper, starts at boot
+com.tcl.common.terminalmanagerplus      # TCL device-management service, watches package installs

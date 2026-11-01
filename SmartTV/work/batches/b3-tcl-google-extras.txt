@@ -1,0 +1,6 @@
+# b3-tcl-google-extras of work/debloat.txt (applied in T5, one batch at a time, remote check after each)
+com.tcl.partnercustomizer               # TCL promo rows and the T key's TKeyActivity; 10 of the 12 TCL lists that mention it disable it
+com.tcl.versionUpdateApp                # firmware updater: a surprise OTA could undo this setup; patch level is 2020-03; 9 repo lists disable it
+com.google.android.partnersetup
+com.google.android.onetimeinitializer
+com.google.android.syncadapters.calendar
