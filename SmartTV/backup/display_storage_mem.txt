@@ -1,0 +1,10 @@
+Physical size: 1280x720
+Physical density: 213
+df: 'C:/Program': No such file or directory
+df: 'Files/Git/data': No such file or directory
+df: 'C:/Program': No such file or directory
+df: 'Files/Git/data': No such file or directory
+MemTotal:        1437400 kB
+MemFree:          357556 kB
+MemAvailable:     555652 kB
+SwapTotal:       1048572 kB

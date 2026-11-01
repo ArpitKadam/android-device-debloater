@@ -1,0 +1,4 @@
+    versionCode=677 minSdk=21 targetSdk=31
+    versionName=3.2.8
+    firstInstallTime=2023-06-25 20:50:46
+    installerPackageName=com.android.vending

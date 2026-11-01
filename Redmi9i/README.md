@@ -61,9 +61,7 @@ docs/ARCHITECTURE.md      how the launcher and Files are built
 docs/DEBLOAT.md           safe debloating, what breaks, the rescue loop
 docs/TERMUX-AND-SYNC.md   Termux boot reliability, rclone to Google Drive, Telegram
 docs/TROUBLESHOOTING.md   every trap met so far
-docs/ROADMAP.md           open items and the paused speech/decision pipeline
 docs/REFERENCE-DEVICE.md  the phone this was built on, and why it shaped the design
-docs/superpowers/         original design specs and plans (history)
 grandline-app/            the launcher (Kotlin, 56 unit tests)
 files-app/                the file manager (Kotlin, 43 unit tests)
 debloat/                  package triage CSV and PowerShell apply/restore scripts
@@ -82,7 +80,7 @@ theme-assets/             where your art goes (git-ignored except its README)
 
 ## Status
 
-Built and verified on one phone (see `docs/REFERENCE-DEVICE.md`). Open items: `docs/ROADMAP.md`. The Gradle package names start
+Built and verified on one phone (see `docs/REFERENCE-DEVICE.md`). The Gradle package names start
 with `dev.redmi9i` after that first device; rename them if you fork.
 
 ## Credits and licences
@@ -90,5 +88,5 @@ with `dev.redmi9i` after that first device; rename them if you fork.
 - Titles use **Pirata One** (SIL Open Font License), bundled in `res/font/`.
 - Weather data: **Open-Meteo** (free, no key; check their terms for your use).
 - Third-party apps installed by the instructions (Termux, Brave, Telegram, rclone) keep their own licences.
-- No licence has been chosen for this repository's code yet: add a `LICENSE` file before publishing.
+- Code is MIT licensed; see the `LICENSE` file at the repository root.
 - One Piece is owned by its creators and publishers. This is a fan theme with no affiliation; the repository contains none of the artwork.

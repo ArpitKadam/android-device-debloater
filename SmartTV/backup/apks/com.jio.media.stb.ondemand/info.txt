@@ -1,0 +1,4 @@
+    versionCode=2406120 minSdk=21 targetSdk=33
+    versionName=24.06.120-98eaba7-A
+    firstInstallTime=2023-06-25 21:05:20
+    installerPackageName=com.android.vending

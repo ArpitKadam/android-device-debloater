@@ -1,0 +1,8 @@
+package:in.startv.hotstar
+package:com.viacom18.tv.voot
+package:com.mxtech.videoplayer.television
+package:com.graymatrix.did
+package:org.videolan.vlc
+package:com.creative.fastscreen.tv
+package:com.discoveryplus.tv.android
+package:com.jio.media.stb.ondemand

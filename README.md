@@ -45,14 +45,15 @@ launcher uses 33 MB.
   Read the code before installing on a device that holds anything important.
 - Network adb gives a shell to any machine holding an accepted key. Keep those devices off shared networks.
 
-## What is not in the repository
+## What is in the repository you might not expect
 
-Left out on purpose; each project's `.gitignore` explains the rule.
+- `SmartTV/backup/`: the pre-change state of the reference TV (package lists, settings, `getprop` with its serial number) and
+  the APKs of the apps that were uninstalled. Take your own backup of your own device; do not rely on this one.
+- `SmartTV/TV-Wallpapers/` and `SmartTV/work/theme/wallpapers/`: wallpaper images used by the SmartTV theme. Check you are
+  happy to redistribute them before forking.
 
-- Device dumps (`backup/`): serial numbers, IDs, Wi-Fi names, and APKs of removed apps. Take your own before changing anything.
-- Third-party APKs (`downloads/`). Re-download them from the official source and verify the checksum.
-- Wallpapers, posters and other artwork you may not have the rights to share. Add your own under the same names.
-- Build output, `local.properties`, adb keys and tokens.
+Left out on purpose: Redmi9i device dumps and artwork (`Redmi9i/.gitignore`), third-party APKs in `downloads/`, build output,
+`local.properties`, adb keys and tokens.
 
 The scripts take the device address as a parameter (`-TvHost`, `TV_HOST`), so no IP or MAC address is hard-coded.
 

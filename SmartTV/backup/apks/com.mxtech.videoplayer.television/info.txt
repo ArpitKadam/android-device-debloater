@@ -1,0 +1,4 @@
+    versionCode=138 minSdk=21 targetSdk=33
+    versionName=1.18.13G
+    firstInstallTime=2023-06-25 19:32:29
+    installerPackageName=com.android.vending
