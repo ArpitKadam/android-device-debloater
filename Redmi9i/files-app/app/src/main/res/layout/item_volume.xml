@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/vol_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/pirata_one"
+        android:textColor="@color/straw_gold"
+        android:textSize="22sp" />
+
+    <ProgressBar
+        android:id="@+id/vol_bar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:layout_marginTop="10dp"
+        android:progressBackgroundTint="#33F6E9C8"
+        android:progressTint="@color/straw_gold" />
+
+    <TextView
+        android:id="@+id/vol_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:alpha="0.7"
+        android:textSize="13sp" />
+</LinearLayout>

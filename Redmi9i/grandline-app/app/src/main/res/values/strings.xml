@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="lock_service_description">Draws the Grand Line wanted-poster lock screen when the screen turns off, and the quick menu behind the accessibility button. It reads nothing on screen.</string>
+</resources>

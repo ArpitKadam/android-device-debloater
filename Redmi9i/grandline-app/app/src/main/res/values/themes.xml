@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="GrandLineTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">#FF0B3C6E</item>
+        <item name="colorAccent">#FFF2B632</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowShowWallpaper">false</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">#FF06223F</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:forceDarkAllowed">false</item>
+    </style>
+</resources>

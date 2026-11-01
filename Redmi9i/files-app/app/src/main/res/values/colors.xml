@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Straw Hat palette, the same values as the Grand Line launcher. -->
+    <color name="deep_sea">#FF06223F</color>
+    <color name="sea_blue">#FF0B3C6E</color>
+    <color name="straw_gold">#FFF2B632</color>
+    <color name="parchment">#FFF6E9C8</color>
+    <color name="vest_red">#FFD9232D</color>
+    <color name="parchment_dim">#B3F6E9C8</color>
+    <color name="parchment_hint">#80F6E9C8</color>
+</resources>

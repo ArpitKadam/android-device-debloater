@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/action_search" android:title="Search" app:showAsAction="never" />
+    <item android:id="@+id/action_new_folder" android:title="New folder" app:showAsAction="never" />
+    <item android:id="@+id/action_sort" android:title="Sort by" app:showAsAction="never">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item android:id="@+id/sort_name" android:title="Name" />
+                <item android:id="@+id/sort_date" android:title="Date" />
+                <item android:id="@+id/sort_size" android:title="Size" />
+                <item android:id="@+id/sort_type" android:title="Type" />
+            </group>
+            <item android:id="@+id/sort_desc" android:checkable="true" android:title="Descending" />
+        </menu>
+    </item>
+    <item android:id="@+id/action_pin" android:title="Pin to home" app:showAsAction="never" />
+    <item android:id="@+id/action_hidden" android:checkable="true" android:title="Show hidden files" app:showAsAction="never" />
+    <item android:id="@+id/action_refresh" android:title="Refresh" app:showAsAction="never" />
+</menu>

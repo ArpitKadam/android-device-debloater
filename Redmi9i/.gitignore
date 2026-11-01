@@ -1,0 +1,28 @@
+# Build output and local config
+build/
+.gradle/
+local.properties
+*.apk
+*.iml
+.idea/
+
+# Device-identifying dumps (serial numbers, account hints). Keep a copy off-repo if you want a rollback record.
+backup/
+
+# Third-party APKs downloaded for sideloading. Re-download from the official sources.
+downloads/
+
+# Phone screenshots used while testing
+screens/
+
+# Copyrighted fan art supplied by the owner. Do not publish it. Add your own under the same names.
+theme-assets/posters/
+theme-assets/marks/
+theme-assets/icons/
+theme-assets/wanted-posters/
+theme-assets/wallpapers/
+
+# Never commit secrets
+*.conf
+*.token
+.env

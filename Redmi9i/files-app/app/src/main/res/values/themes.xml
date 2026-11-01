@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">@color/sea_blue</item>
+        <item name="colorPrimaryDark">@color/deep_sea</item>
+        <item name="colorAccent">@color/straw_gold</item>
+        <item name="colorControlNormal">@color/parchment_dim</item>
+        <item name="colorControlActivated">@color/straw_gold</item>
+        <item name="android:windowBackground">@color/deep_sea</item>
+        <item name="android:textColorPrimary">@color/parchment</item>
+        <item name="android:textColorSecondary">@color/parchment_dim</item>
+        <item name="android:textColorHint">@color/parchment_hint</item>
+        <item name="android:statusBarColor">@color/deep_sea</item>
+        <item name="android:navigationBarColor">@color/deep_sea</item>
+        <item name="android:forceDarkAllowed">false</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="alertDialogTheme">@style/GrandLineDialog</item>
+        <item name="popupMenuStyle">@style/GrandLinePopup</item>
+        <item name="actionOverflowMenuStyle">@style/GrandLineOverflow</item>
+        <item name="actionModeStyle">@style/GrandLineActionMode</item>
+    </style>
+
+    <style name="GrandLineDialog" parent="Theme.AppCompat.Dialog.Alert">
+        <item name="android:windowBackground">@drawable/bg_dialog</item>
+        <item name="android:textColorPrimary">@color/parchment</item>
+        <item name="android:textColorSecondary">@color/parchment_dim</item>
+        <item name="colorAccent">@color/straw_gold</item>
+        <item name="android:textColor">@color/parchment</item>
+        <item name="buttonBarButtonStyle">@style/GrandLineDialogButton</item>
+    </style>
+
+    <style name="GrandLineDialogButton" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <item name="android:textColor">@color/straw_gold</item>
+    </style>
+
+    <style name="GrandLinePopup" parent="Widget.AppCompat.PopupMenu">
+        <item name="android:popupBackground">@drawable/bg_popup</item>
+    </style>
+
+    <style name="GrandLineOverflow" parent="Widget.AppCompat.PopupMenu.Overflow">
+        <item name="android:popupBackground">@drawable/bg_popup</item>
+        <item name="overlapAnchor">false</item>
+    </style>
+
+    <style name="GrandLineActionMode" parent="Widget.AppCompat.ActionMode">
+        <item name="background">@color/sea_blue</item>
+        <item name="titleTextStyle">@style/GrandLineToolbarTitle</item>
+    </style>
+
+    <style name="GrandLineToolbarTitle" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:fontFamily">@font/pirata_one</item>
+        <item name="android:textColor">@color/straw_gold</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+
+    <style name="GrandLineToolbarSubtitle" parent="TextAppearance.AppCompat.Widget.ActionBar.Subtitle">
+        <item name="android:textColor">@color/parchment_dim</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+</resources>

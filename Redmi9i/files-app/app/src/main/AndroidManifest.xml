@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
+    <application
+        android:allowBackup="false"
+        android:icon="@drawable/ic_launcher"
+        android:label="Files"
+        android:requestLegacyExternalStorage="true"
+        android:theme="@style/AppTheme">
+
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".viewer.ImageViewerActivity" android:exported="false" />
+        <activity android:name=".viewer.MediaViewerActivity" android:exported="false"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
+        <activity android:name=".viewer.PdfViewerActivity" android:exported="false" />
+        <activity android:name=".viewer.TextViewerActivity" android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".viewer.HtmlDocViewerActivity" android:exported="false" />
+        <activity android:name=".viewer.ZipViewerActivity" android:exported="false" />
+
+        <service
+            android:name=".ops.OperationService"
+            android:exported="false"
+            android:foregroundServiceType="dataSync" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+    </application>
+</manifest>
